@@ -1,0 +1,13 @@
+.Home {
+  color: green;
+}
+
+.HomeTwo {
+  color: red;
+}
+
+.Projects ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
