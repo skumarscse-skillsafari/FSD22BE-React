@@ -10,25 +10,28 @@
 
 <body>
     <div id="root">
-
+        <button onclick="displayMessage()">Click Me...</button>
     </div>
 
     <script>
 
-        const list = `
-        <ul>
-            <li>Maths</li>
-            <li>Physics</li>
-            <li>Chemistry</li>
-        </ul>`
-        root.innerHTML = list;
+        // const list = `
+        // <ul>
+        //     <li>Maths</li>
+        //     <li>Physics</li>
+        //     <li>Chemistry</li>
+        // </ul>`
+        // root.innerHTML = list;
 
-        function appendList(list) {
-            const root = document.querySelector("#root");
-            root.innerHTML = list;
+        // function appendList(list) {
+        //     const root = document.querySelector("#root");
+        //     root.innerHTML = list;
+        // }
+
+        // appendList(list);
+        function displayMessage() {
+            alert("You clicked a button...")
         }
-
-        appendList(list);
     </script>
 </body>
 

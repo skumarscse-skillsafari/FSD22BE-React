@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <h1>To-Do List</h1>
-      <ToDoList todos={todos} />
+      <ToDoList todos={todos} setToDos={setToDos} />
       <AddToDo setToDos={setToDos} />
       {/* <Demo /> */}
     </div>
