@@ -1,7 +1,9 @@
 import { useRef } from "react";
+import { v4 as uuid } from "uuid";
 
 function AddToDo({ setToDos }) {
   // console.log(setToDos);
+  // console.log(uuid());
   const inputRef = useRef();
   function handleAddToDo(e) {
     e.preventDefault();
@@ -12,7 +14,7 @@ function AddToDo({ setToDos }) {
     const text = inputRef.current.value;
 
     const todo = {
-      id: 4,
+      id: uuid(),
       text,
       done: false,
     };
