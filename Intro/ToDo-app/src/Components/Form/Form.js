@@ -15,7 +15,7 @@ function Form() {
   }
 
   function handleChange(e) {
-    const { type, name, value } = e.target;
+    const { type, name, value } = e.target; // <textarea name="address" value="ABC"></textarea> // { name: "address", value: "ABC"}
     console.log(value);
     type === "checkbox"
       ? setFormData((prevData) => {
@@ -26,8 +26,8 @@ function Form() {
         })
       : setFormData((prevData) => {
           return {
-            ...prevData,
-            [name]: value,
+            ...prevData, // { name:..., email:... }
+            [name]: value, // address: "ABC"
           };
         });
     console.log(formData);
