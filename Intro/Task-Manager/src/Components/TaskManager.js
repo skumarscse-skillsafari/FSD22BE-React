@@ -1,7 +1,9 @@
 import "../CSS/taskManager.css";
 import { useState } from "react";
 import Task from "./Task";
+import AddTask from "./AddTask";
 function TaskManager() {
+  const [openAddModel, setOpenAddModel] = useState(false);
   const [tasks, setTasks] = useState([
     {
       id: 1001,
@@ -20,7 +22,7 @@ function TaskManager() {
     <div className="taskManager">
       <header>Task Manager</header>
       <div className="taskManager__container">
-        <button>Add task +</button>
+        <button onClick={() => setOpenAddModel(true)}>Add task +</button>
         <div className="taskManager__tasks">
           {tasks.map((task) => (
             <Task
@@ -33,6 +35,9 @@ function TaskManager() {
           ))}
         </div>
       </div>
+      {openAddModel && (
+        <AddTask onClose={() => setOpenAddModel(false)} open={openAddModel} />
+      )}
     </div>
   );
 }
