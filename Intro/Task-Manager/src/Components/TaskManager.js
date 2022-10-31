@@ -9,13 +9,13 @@ function TaskManager() {
       id: 1001,
       title: "This is first title",
       description: "This is first description",
-      completed: false,
+      completed: true,
     },
     {
       id: 1002,
       title: "This is second title",
       description: "This is second description",
-      completed: false,
+      completed: true,
     },
   ]);
   return (

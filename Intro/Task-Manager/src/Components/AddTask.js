@@ -6,9 +6,13 @@ function AddTask({ onClose, open }) {
   const [description, setDescription] = useState("");
   console.log(title);
   console.log(description);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onClose();
+  };
   return (
     <Modal modalLable="Add Task" onClose={onClose} open={open}>
-      <form className="addTask" name="addTask">
+      <form className="addTask" name="addTask" onSubmit={handleSubmit}>
         <input
           type="text"
           name="title"
