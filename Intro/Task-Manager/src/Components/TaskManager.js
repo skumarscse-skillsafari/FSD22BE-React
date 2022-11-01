@@ -1,23 +1,29 @@
 import "../CSS/taskManager.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Task from "./Task";
 import AddTask from "./AddTask";
+import { db } from "../firebase/firebase";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 function TaskManager() {
   const [openAddModel, setOpenAddModel] = useState(false);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1001,
-      title: "This is first title",
-      description: "This is first description",
-      completed: true,
-    },
-    {
-      id: 1002,
-      title: "This is second title",
-      description: "This is second description",
-      completed: true,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    const taskColRef = query(
+      collection(db, "tasks"),
+      orderBy("created", "desc")
+    );
+    console.log(taskColRef);
+    onSnapshot(taskColRef, (snapshot) => {
+      console.log(snapshot.docs);
+      setTasks(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
+  console.log(tasks);
   return (
     <div className="taskManager">
       <header>Task Manager</header>
@@ -28,9 +34,9 @@ function TaskManager() {
             <Task
               key={task.id}
               id={task.id}
-              title={task.title}
-              description={task.description}
-              completed={task.completed}
+              title={task.data.title}
+              description={task.data.description}
+              completed={task.data.completed}
             />
           ))}
         </div>
