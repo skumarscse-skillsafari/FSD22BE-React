@@ -2,12 +2,28 @@ import "../CSS/task.css";
 import { useState } from "react";
 import TaskItem from "./TaskItem";
 import EditTask from "./EditTask";
+import { db } from "../firebase/firebase";
+import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 function Task({ id, title, description, completed }) {
   const [checked, setChecked] = useState(completed);
   const [open, setOpen] = useState({ edit: false, view: false });
 
-  const handleDelete = () => {};
-  const handleChange = () => {};
+  const handleDelete = async () => {
+    const taskDocRef = doc(db, "tasks", id);
+    try {
+      await deleteDoc(taskDocRef);
+    } catch (error) {
+      alert(error);
+    }
+  };
+  const handleChange = async () => {
+    const taskDocRef = doc(db, "tasks", id);
+    try {
+      await updateDoc(taskDocRef, { completed: checked });
+    } catch (error) {
+      alert(error);
+    }
+  };
   const handleClose = () => {
     setOpen({ edit: false, view: false });
   };
@@ -24,6 +40,7 @@ function Task({ id, title, description, completed }) {
         />
         <label
           htmlFor={`checkbox-${id}`}
+          className="checkbox-custom-label"
           onClick={() => setChecked(!checked)}
         ></label>
       </div>

@@ -1,16 +1,25 @@
 import Modal from "./Modal";
 import "../CSS/editTask.css";
 import { useState } from "react";
+import { db } from "../firebase/firebase";
+import { doc, updateDoc } from "firebase/firestore";
 function EditTask({ open, onClose, toEditTitle, toEditDescription, id }) {
   const [title, setTitle] = useState(toEditTitle);
   const [description, setDescription] = useState(toEditDescription);
-  const handleSubmit = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
+    const taskDocRef = doc(db, "tasks", id);
+    console.log(taskDocRef);
+    try {
+      await updateDoc(taskDocRef, { title, description });
+    } catch (error) {
+      alert(error);
+    }
     onClose();
   };
   return (
     <Modal modalLable="Edit Task" onClose={onClose} open={open}>
-      <form className="addTask" name="addTask" onSubmit={handleSubmit}>
+      <form className="addTask" name="addTask" onSubmit={handleUpdate}>
         <input
           type="text"
           name="title"
