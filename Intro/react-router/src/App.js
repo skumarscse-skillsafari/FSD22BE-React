@@ -6,7 +6,9 @@ import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import Error from "./Components/Error";
+import Product from "./Components/Product";
 import "./App.css";
+import Products from "./Components/Products";
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/products" element={<Products />}>
+            <Route path=":productId" element={<Product />} />
+          </Route>
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
