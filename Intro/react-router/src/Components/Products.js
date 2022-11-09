@@ -1,14 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const products = useOutletContext();
   console.log(products);
-  useEffect(() => {
-    axios.get("https://fakestoreapi.com/products").then((res) => {
-      setProducts(res.data);
-    });
-  }, []);
   return (
     <div>
       <h1>

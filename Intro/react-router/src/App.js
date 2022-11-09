@@ -9,6 +9,7 @@ import Error from "./Components/Error";
 import Product from "./Components/Product";
 import "./App.css";
 import Products from "./Components/Products";
+import SharedProductComponent from "./Components/SharedProductComponent";
 
 function App() {
   return (
@@ -21,8 +22,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:productId" element={<Product />} />
+          <Route path="/products" element={<SharedProductComponent />}>
+            <Route index element={<Products />} />
+            <Route path=":productId" element={<Product />} />
+          </Route>
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
