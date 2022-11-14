@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import FirstNameContext from "../firstNameContext";
+import UserContext from "../userContext";
 const Contact = () => {
-  const firstName = useContext(FirstNameContext);
+  const user = useContext(UserContext);
+  console.log(user);
   return (
     <div>
       <h2>This is Contact Component.</h2>
-      <p>The First Name in Contact Component: {firstName}</p>
+      <p>The First Name in Contact Component: {user.firstName}</p>
     </div>
   );
 };

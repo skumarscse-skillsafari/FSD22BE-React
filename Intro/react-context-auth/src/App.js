@@ -1,15 +1,19 @@
-import FirstNameContext from "./firstNameContext";
-import Home from "./Components/Home";
-import "./App.css";
+// import { useContext } from "react";
+// import UserContext from "./userContext";
+// import Home from "./Components/Home";
+import Auth from "./Firebase-Auth/Components/Auth";
+// import "./App.css";
 
 function App() {
-  const firstName = "SkillSafari";
+  // const user = useContext(UserContext);
+  // console.log(user);
   return (
-    <FirstNameContext.Provider value={firstName}>
-      <div className="App">
-        <Home />
-      </div>
-    </FirstNameContext.Provider>
+    // <UserContext.Provider value={user}>
+    <div className="App">
+      {/* <Home /> */}
+      <Auth />
+    </div>
+    // </UserContext.Provider>
   );
 }
 
