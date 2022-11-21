@@ -5,7 +5,7 @@ export default class StateDemo extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: 1,
+      firstName: "SkillSafari",
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -14,7 +14,8 @@ export default class StateDemo extends React.Component {
     this.setState((prevState) => {
       console.log(prevState);
       return {
-        count: prevState.count + 1,
+        ...prevState,
+        lastName: "EduKeys",
       };
     });
     console.log(this.state);
@@ -24,9 +25,10 @@ export default class StateDemo extends React.Component {
     return (
       <div>
         <h2>StateDemo Class Component</h2>
-        <p>First Name : {this.state.count}</p>
-        <button onClick={this.handleClick}>Click</button>
+        <p>First Name : {this.state.firstName}</p>
+        <p>Last Name : {this?.state?.lastName}</p>
         <StateProp firstName={this.state.firstName} />
+        <button onClick={this.handleClick}>Click</button>
       </div>
     );
   }
