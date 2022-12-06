@@ -1,0 +1,22 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "This app is to demo static website contents in express",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "static",
+    "website",
+    "render"
+  ],
+  "author": "SkillSafari",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
