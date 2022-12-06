@@ -1,7 +1,7 @@
 {
-  "name": "express-app",
+  "name": "5-basic-json",
   "version": "1.0.0",
-  "description": "This app is to demo static website contents in express",
+  "description": "This is to demo how to send json as response to the client",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -10,16 +10,13 @@
   },
   "keywords": [
     "express",
-    "static",
-    "website",
-    "render"
+    "json",
+    "response"
   ],
   "author": "SkillSafari",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
+    "express": "^4.18.2",
     "nodemon": "^2.0.20"
   }
 }
