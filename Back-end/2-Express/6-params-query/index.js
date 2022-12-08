@@ -2,14 +2,16 @@ import express from "express";
 import { products } from "./products.js";
 const app = express();
 
-app.get("/api/v1", (req, res) => {
+const baseUrl = "/api/v1";
+
+app.get(baseUrl, (req, res) => {
   res.status(200).send(`
     <h1>Params and Query</h1>
     <a href="/api/v1/products">Click here to view products</a>
     `);
 });
 
-app.get("/api/v1/products", (req, res) => {
+app.get(baseUrl + "/products", (req, res) => {
   const newProducts = products.map((product) => {
     const { id, title, description, image } = product;
     return { id, title, description, image };
@@ -17,8 +19,8 @@ app.get("/api/v1/products", (req, res) => {
   res.status(200).json(newProducts);
 });
 
-app.get("/api/v1/products/:productID", (req, res) => {
-  console.log(req.params);
+app.get(baseUrl + "/products/:productID", (req, res) => {
+  // console.log(req.params);
   const { productID } = req.params;
   const singleProduct = products.find(
     (product) => product.id === Number(productID)
@@ -26,13 +28,13 @@ app.get("/api/v1/products/:productID", (req, res) => {
   res.status(200).json(singleProduct);
 });
 
-app.get("/api/v1/query", (req, res) => {
+app.get(baseUrl + "/query", (req, res) => {
   // console.log(req.query);
   const { limit, search } = req.query;
   let sortedProducts = [...products];
   if (search) {
     sortedProducts = sortedProducts.filter((product) => {
-      return product.title.startsWith(search);
+      return product.title.includes(search);
     });
   }
 
@@ -49,7 +51,7 @@ app.get("/api/v1/query", (req, res) => {
 app.all("*", (req, res) => {
   res.status(404).send(`
         <h1>Page not found</h1>
-        <a href="/">Back to Home Page.</a>
+        <a href="/api/v1">Back to Home Page.</a>
     `);
 });
 
