@@ -1,5 +1,5 @@
 export const loginMiddleware = (req, res, next) => {
-  const { username } = req.query;
+  const { username } = req.query; // { "username" : "skillsafari"}
   // console.log(username);
   if (username === "skillsafari") {
     req.username = "SkillSafari";

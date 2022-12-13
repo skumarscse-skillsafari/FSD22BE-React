@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login", loginMiddleware, (req, res) => {
-  const { username } = req;
+  const { username } = req; // { "username" : "SkillSafari" }
   res.status(200).send(`<h1>Welcome, ${username}</h2>`);
 });
 
