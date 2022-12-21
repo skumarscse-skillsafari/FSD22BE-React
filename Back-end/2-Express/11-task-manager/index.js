@@ -7,9 +7,9 @@ dotenv.config();
 
 const app = express();
 // send data as form-data
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 // send the data as json
-app.use(express.json());
+app.use(express.json({ extended: true }));
 // Middleware, used to send cross domain requests
 app.use(cors());
 
