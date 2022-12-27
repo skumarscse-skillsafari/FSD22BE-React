@@ -15,6 +15,7 @@ const CONNECTION_URL = process.env.CONNECTION_URL;
 
 app.use("/api/v1/auth", authRoutes);
 
+mongoose.set("strictQuery", false);
 mongoose
   .connect(CONNECTION_URL, {
     useNewUrlParser: true,

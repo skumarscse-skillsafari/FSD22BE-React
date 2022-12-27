@@ -70,7 +70,8 @@ export const postContentRoute = async (req, res) => {
   try {
     const decoded = jwt.verify(token, process.env.KEY); // { "name": "SkillSafari", "email": "info@skillsafari.in", "iat": 1671808062 }
     const email = decoded.email;
-    User.updateOne({ email: email }, { $set: { content: req.body.content } });
+    const { content } = req.body;
+    await User.updateOne({ email: email }, { $set: { content: content } });
     return res
       .status(200)
       .json({ success: true, msg: "Content added successfully" });

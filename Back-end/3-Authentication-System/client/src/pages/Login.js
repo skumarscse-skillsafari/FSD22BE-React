@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/v1/auth/login", {
@@ -17,6 +19,7 @@ const Login = () => {
       localStorage.setItem("token", data.token);
       alert("User Logged-In Successfully");
       // navigate to "Dashboard Page"
+      navigate("/dashboard");
     } else {
       alert("Wrong credentilas...!");
     }
@@ -45,6 +48,9 @@ const Login = () => {
           <input type="submit" value="Login" />
         </p>
       </form>
+      <p>
+        Not yet Registered? <Link to="/">Click Here to Register</Link>
+      </p>
     </div>
   );
 };

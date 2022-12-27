@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   //   console.log(name);
   //   console.log(email);
   //   console.log(password);
@@ -21,8 +23,9 @@ const Register = () => {
     });
     const data = await response.json(); // { success:..., data:..., msg:...}
     console.log(data);
-    if (data.success === true) {
+    if (data.success) {
       // navigate to "Login Page"
+      navigate("/login");
     }
   };
   return (
@@ -57,6 +60,9 @@ const Register = () => {
           <input type="submit" value="Register" />
         </p>
       </form>
+      <p>
+        Already Registered? <Link to="/login">Click Here to Login</Link>
+      </p>
     </div>
   );
 };
