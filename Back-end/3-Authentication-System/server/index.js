@@ -13,6 +13,10 @@ app.use(cors());
 const PORT = process.env.PORT;
 const CONNECTION_URL = process.env.CONNECTION_URL;
 
+app.get("/", (req, res) => {
+  res.send("<h1>Auth System App hosted successfully in Cyclic.sh</h1>");
+});
+
 app.use("/api/v1/auth", authRoutes);
 
 mongoose.set("strictQuery", false);

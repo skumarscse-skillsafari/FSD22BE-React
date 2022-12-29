@@ -7,14 +7,17 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const updateContent = async (e) => {
     e.preventDefault();
-    const req = await fetch("http://localhost:5000/api/v1/auth/content", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ content: tempContent }),
-    });
+    const req = await fetch(
+      "https://dull-teal-centipede-robe.cyclic.app/api/v1/auth/content",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ content: tempContent }),
+      }
+    );
     const data = await req.json();
     if (data.success) {
       setContent(tempContent);
@@ -24,11 +27,14 @@ const Dashboard = () => {
     }
   };
   const getContent = async () => {
-    const req = await fetch("http://localhost:5000/api/v1/auth/content", {
-      headers: {
-        "x-access-token": localStorage.getItem("token"),
-      },
-    });
+    const req = await fetch(
+      "https://dull-teal-centipede-robe.cyclic.app/api/v1/auth/content",
+      {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }
+    );
     const data = await req.json();
     if (data.success) {
       setContent(data.content);
